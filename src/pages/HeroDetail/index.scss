@@ -1,0 +1,186 @@
+$base-color: #141e37;
+
+@mixin baseBgColor {
+  background-color: $base-color;
+}
+
+.hero-detail {
+  height: 100vh;
+  .at-fab {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    z-index: 100;
+    transition: all 0.6s;
+  }
+  .hide {
+    transform: translateY(120px);
+  }
+}
+.section {
+  margin: 20px;
+  .title {
+    margin-bottom: 20px;
+    position: relative;
+    .decorate-line-horizontal {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 180px;
+      height: 8px;
+      .border-line {
+        position: absolute;
+        bottom: 0;
+        width: 180px;
+        height: 4px;
+        @include baseBgColor();
+        transform-origin: center left;
+      }
+      .decorate-line {
+        top: 0;
+        left: 0;
+        position: absolute;
+        width: 64px;
+        height: 4px;
+        @include baseBgColor();
+        transform-origin: center left;
+        &::after {
+          content: '';
+          position: absolute;
+          top: -4px;
+          left: 100%;
+          width: 4px;
+          height: 4px;
+          border-right: 4px solid transparent;
+          border-bottom: 4px solid #141e37;
+        }
+      }
+    }
+    .label {
+      padding-top: 18px;
+      font-size: 36px;
+      font-weight: 700;
+    }
+  }
+  .video {
+    width: 100%;
+    height: 54vw;
+    border-radius: 8px;
+    display: block;
+  }
+}
+.info {
+  margin: 0;
+  position: relative;
+  height: calc(56.2vw + 308px);
+  .video {
+    height: 56.5vw;
+    border-radius: 0;
+  }
+  .bg-image {
+    width: 100%;
+    height: 56.5vw;
+  }
+  .panel {
+    margin-top: -20px;
+    padding: 20px;
+    position: absolute;
+    top: 56.5vw;
+    left: 20px;
+    right: 20px;
+    background-color: #32c8ff;
+    border-radius: 8px;
+    .names {
+      .name {
+        font-size: 40px;
+        font-weight: 700;
+        color: white;
+      }
+      .full-name {
+        margin-top: 10px;
+      }
+    }
+    .role-diff {
+      padding-top: 20px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      .divider {
+        margin-right: 70px;
+        height: 130px;
+        width: 1px;
+        background-color: white;
+      }
+      .label {
+        color: white;
+        font-size: 26px;
+      }
+      .role {
+        width: 192px;
+        .icon {
+          width: 48px;
+          height: 48px;
+        }
+      }
+      .diff {
+        width: 60%;
+        .row {
+          display: flex;
+          align-items: center;
+          line-height: 40px;
+          .label {
+            margin-right: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+.spells {
+  &-scroll {
+    display: flex;
+    margin: 20px 0;
+    .spell-item {
+      opacity: 0.6;
+      .icon {
+        margin-right: 20px;
+        width: 80px;
+        height: 80px;
+        display: block;
+        border-radius: 50%;
+      }
+    }
+    .active {
+      opacity: 1;
+    }
+  }
+  &-name {
+    font-weight: 700;
+  }
+  &-desc {
+    margin-top: 10px;
+    min-height: 160px;
+    font-size: 26px;
+  }
+}
+.skins {
+  &-swiper {
+    height: 52.3vw;
+  }
+  &-img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  &-name {
+    margin: 10px 0;
+    .text {
+      font-weight: 700;
+    }
+  }
+  &-quality {
+    margin: 10px 0;
+  }
+  &-desc {
+    height: 360px;
+  }
+}

@@ -1,0 +1,19 @@
+.heros {
+  .tabs-diff .at-tabs__header {
+    text-align: left;
+  }
+  .scroll-view {
+    padding: 10px 0;
+    height: calc(100vh - 280px); // 280 = (44 + 44 + 42 + 10) * 2
+  }
+  &-list {
+    .at-grid__flex {
+      .content-inner__img {
+        border-radius: 50%;
+      }
+      .content-inner__text {
+        font-size: 24px;
+      }
+    }
+  }
+}

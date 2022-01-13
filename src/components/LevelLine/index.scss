@@ -1,0 +1,24 @@
+.line {
+  display: flex;
+  justify-content: center;
+  .cd-bg {
+    margin-right: 4px;
+    width: 72px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.3);
+    transform: skewX(-35deg);
+    .cd-inner {
+      display: block;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transform: scale(1.4);
+      transform-origin: center;
+      transition: all 0.6s;
+    }
+  }
+  .on .cd-inner {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

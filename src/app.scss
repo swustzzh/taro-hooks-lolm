@@ -1,0 +1,9 @@
+$color-brand: #32c8ff; // 修改默认主题色
+
+@import '~taro-ui/dist/style/index.scss';
+
+text,
+view {
+  font-size: 28px;
+  color: #141e37;
+}
