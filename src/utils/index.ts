@@ -32,10 +32,7 @@ export const useParams = () => Taro.getCurrentInstance().router?.params || {};
  * @param key 存储的key
  * @param parse 是否解析
  */
-export const getStorage = (key: string, parse?: boolean) => {
-  const item = Taro.getStorageSync(key);
-  return parse ? JSON.parse(item) : item;
-};
+export const getStorage = (key: string) => Taro.getStorageSync(key);
 
 /**
  * 同步存储storage

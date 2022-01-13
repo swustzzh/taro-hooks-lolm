@@ -28,7 +28,7 @@ const HeroDetail = () => {
   const [showBgImg, setShowBgImg] = useState<boolean>(false); // 视频错误，显示默认图片
   const [spells, setSpells] = useState<SpellProps[]>([]);
   const { id = '10001' } = useParams();
-  const skins = id ? getStorage('skins', true).filter((el: SkinItem) => el.heroId === id) : [];
+  const skins = id ? getStorage('skins').filter((el: SkinItem) => el.heroId === id) : [];
   const currentSkin = skins[currentSkinIndex] || {};
 
   useEffect(() => {

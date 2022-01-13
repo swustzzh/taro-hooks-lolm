@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AtGrid, AtSearchBar, AtTabs } from 'taro-ui';
 import { ScrollView, View } from '@tarojs/components';
 import Taro from '@tarojs/taro';
+import { getHeros, getSkins } from '@/api';
+import { Loading } from '@/components';
 import { HeroItem, HeroListItem } from '@/interfaces';
 import { getStorage } from '@/utils';
 import { DiffTabList, RolesMap, RolesTabList } from '@/utils/constants';
@@ -10,8 +12,14 @@ import './index.scss';
 const Heros = () => {
   const [currentDiff, setCurrentDiff] = useState<number>(0);
   const [currentRole, setCurrentRole] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(false);
   const [search, setSearch] = useState<string>('');
-  const heros: HeroItem[] = getStorage('heros', true);
+  const heros: HeroItem[] = getStorage('heros');
+
+  useEffect(() => {
+    setLoading(true);
+    Promise.all([getHeros(), getSkins()]).finally(() => setLoading(false));
+  }, []);
 
   /**
    * 点击英雄
@@ -21,7 +29,9 @@ const Heros = () => {
     Taro.navigateTo({ url: `/pages/HeroDetail/index?id=${item.heroId}` });
   };
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <View className="heros">
       <AtSearchBar
         value={search}

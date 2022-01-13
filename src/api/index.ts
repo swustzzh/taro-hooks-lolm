@@ -31,8 +31,10 @@ export function getHeros(): Promise<HeroListItem[]> {
     TaroGet(urls.herosList)
       .then((res: HeroListResponse) => {
         if (res.fileTime !== getStorage('heros_fileTime')) {
-          resolve(obj2arr(res.heroList || {}) as HeroListItem[]);
+          const heros = obj2arr(res.heroList || {}) as HeroListItem[];
           setStorage('heros_fileTime', res.fileTime);
+          setStorage('heros', heros);
+          resolve(heros);
         } else {
           resolve([]);
         }
@@ -57,8 +59,10 @@ export function getSkins(): Promise<SkinItem[]> {
     TaroGet(urls.skins)
       .then((res: SkinListResponse) => {
         if (res.fileTime !== getStorage('skins_fileTime')) {
-          resolve(obj2arr(res.skinList) as SkinItem[]);
+          const skins = obj2arr(res.skinList) as SkinItem[];
           setStorage('skins_fileTime', res.fileTime);
+          setStorage('skins', skins);
+          resolve(skins);
         } else {
           resolve([]);
         }
